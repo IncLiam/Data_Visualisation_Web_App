@@ -6,4 +6,4 @@
 *.iml
 out
 gen
-app_storage
+app_storage/bot_database.db
