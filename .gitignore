@@ -8,4 +8,3 @@ out
 gen
 app_storage/bot_database.db
 database_updater/constants.py
-
