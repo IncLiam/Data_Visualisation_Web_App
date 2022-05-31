@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db-updater-service:
+    image: liamrkr/datawebapprepo:db_updater
+    volumes:  # dir to mount to container relative to dc : dir of volume as should appear in code
+      - ./app_storage:/app/app_storage
+
+  webapp-service:
+    image: liamrkr/datawebapprepo:webapp
+    volumes:  # dir to mount to container relative to dc : dir of volume as should appear in code
+      - ./app_storage:/app/app_storage
+    ports:
+      - "8050:8050"
+    depends_on:
+      - db-updater-service
