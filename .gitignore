@@ -3,8 +3,6 @@
 
 # IntelliJ project files
 .idea
-*.iml
-out
-gen
+venv
 app_storage/bot_database.db
 database_updater/constants.py
