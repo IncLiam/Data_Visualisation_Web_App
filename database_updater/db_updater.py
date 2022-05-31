@@ -1,13 +1,10 @@
 from binance.client import Client
 import pandas as pd
 import sqlite3
+import constants
 
 
-client = Client("X9RSMKuh1XgsmegJnQ1ZsvnZB0sJtdQHpWorth6A18RNIgsQ7AAY5wMxLWfYeLxF",
-                "YkVycdMY1nwlUD7aHhtUO8mpZIKSEGy3KYMhes9nu7NNRzqzlSFto4qljDLy4MHi")
-
-GBP_balance = client.get_asset_balance("GBP")
-print(GBP_balance)
+client = Client(constants.API_KEY, constants.SECRET_KEY)
 
 
 def klines_to_df(klines):
@@ -47,8 +44,8 @@ while True:
     if last_minute_table != f"{past_5minute_df.iloc[-2].name}":
         past_5minute_df.iloc[[-2]].to_sql("BTCUSDT", con=conn, index=True, if_exists='append')
         conn.commit()
-        dataframe = pd.read_sql_query(f"SELECT * FROM BTCUSDT ORDER BY datetime DESC LIMIT 1;", conn)
-        print(f"5 mins kline as df is:\n {past_5minute_df}")
         last_minute_table = past_5minute_df.iloc[-2].name
+        print(f"5 mins kline as df is:\n {past_5minute_df}")
         print(f"updated last row in table with {last_minute_table}")
+        dataframe = pd.read_sql_query(f"SELECT * FROM BTCUSDT ORDER BY datetime DESC LIMIT 1;", conn)
         print(f"checking, actual last row in table is :\n {dataframe}")
