@@ -30,7 +30,7 @@ def klines_to_df(klines):
 
 past_day_df = klines_to_df(client.get_historical_klines("BTCUSDT", Client.KLINE_INTERVAL_1MINUTE, "1 day ago UTC"))
 
-conn = sqlite3.connect(f"../app_storage/bot_database.db", check_same_thread=False)
+conn = sqlite3.connect(f"../app_storage/database.db", check_same_thread=False)
 past_day_df.iloc[:-1].to_sql("BTCUSDT", con=conn, index=True, if_exists='replace')
 dataframe = pd.read_sql_query(f"SELECT * FROM BTCUSDT ORDER BY datetime DESC LIMIT 1;", conn)
 print(f"actual last row in table is :\n {dataframe}")

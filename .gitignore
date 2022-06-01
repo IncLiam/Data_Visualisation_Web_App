@@ -4,5 +4,5 @@
 # IntelliJ project files
 .idea
 venv
-app_storage/bot_database.db
+app_storage/database.db
 database_updater/constants.py

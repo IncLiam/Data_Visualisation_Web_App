@@ -1,13 +1,17 @@
 FROM python:3.7
 
-COPY requirements.txt /app/webapp_dir/requirements.txt
-
+# creates directory path in container
 WORKDIR /app/webapp_dir
 
+# <src on machine running dockerile> <dest inside container>, . is WORKDIR
+COPY requirements.txt .
+
+# <src> <dest> same as copy with extra functionalities, . is WORKDIR
 ADD web_app.py .
 
 RUN pip install -r requirements.txt
 
+# expose done in docker compose
 # EXPOSE 8050
 
 CMD ["python", "web_app.py"]

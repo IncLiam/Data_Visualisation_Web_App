@@ -8,7 +8,7 @@ import pandas as pd
 
 
 def load_df():
-    db_connection = sqlite3.connect("../app_storage/bot_database.db", check_same_thread=False)
+    db_connection = sqlite3.connect("../app_storage/database.db", check_same_thread=False)
     # get past day from database
     dataframe = pd.read_sql_query(f"SELECT * FROM BTCUSDT ORDER BY datetime DESC LIMIT 1440;", db_connection)
     dataframe = dataframe[::-1]
