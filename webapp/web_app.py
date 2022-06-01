@@ -80,7 +80,7 @@ def update_figure(selected_hours, data):
     Input('store-data', 'data'),
     Input('submit-reload', 'n_clicks'),)
 def update_text(data, n_clicks):
-    _ = n_clicks  # n_clicks not used, to shut up compiler
+    _ = n_clicks  # n_clicks not used
     df = pd.read_json(data, orient='split')
     return f'Prototype showing live close prices from Binance exchange up to {df.iloc[-1].name} (UTC)'
 
@@ -89,7 +89,7 @@ def update_text(data, n_clicks):
     Output('store-data', 'data'),
     Input('submit-reload', 'n_clicks'))
 def update_data(n_clicks):
-    _ = n_clicks  # n_clicks not used, to shut up compiler
+    _ = n_clicks  # n_clicks not used
     df = load_df()
     return df.to_json(orient='split')
 
