@@ -1,7 +1,7 @@
 FROM python:3.7
 
 # creates directory path in container
-WORKDIR /app/webapp_dir
+WORKDIR /app/web_app_dir
 
 # <src on machine running dockerile> <dest inside container>, . is WORKDIR
 COPY requirements.txt .

@@ -2,12 +2,12 @@ version: '3'
 
 services:
   db-updater-service:
-    image: datawebapprepo:db_updater
+    image: liamrkr/bot_web_app:db_updater
     volumes:  # dir to mount to container relative to dc : dir of volume as should appear in code
       - ./app_storage:/app/app_storage
 
-  webapp-service:
-    image: datawebapprepo:webapp
+  web-app-service:
+    image: liamrkr/bot_web_app:web_app
     volumes:  # dir to mount to container relative to dc : dir of volume as should appear in code
       - ./app_storage:/app/app_storage
     ports:
