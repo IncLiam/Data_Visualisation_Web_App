@@ -6,3 +6,4 @@
 venv
 app_storage/database.db
 database_updater/constants.py
+
